@@ -21,6 +21,9 @@ namespace EntityLayer.Concrete
         public int categoryID { get; set; }
         public Category Category { get; set; }
 
+        public int writerID { get; set; }
+        public Writer Writer { get; set; }
+
         public List<Comment> Comments { get; set; }
     }
 }

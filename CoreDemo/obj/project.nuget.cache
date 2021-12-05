@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "3Tfwlj5/JkyIwopks4hCM8Of64220KoczhsomA/BLeiz0KkLjIBA7gxlO5FT2dQy3SFpfT7FAJfrGoFUm0xqBg==",
+  "dgSpecHash": "ERgnSEGoyqbBX/YxojrwVsiNznjDKGXMpIm6i9xw0O2i1zDINEVlh6MVfLEpKHsG8s5hENaU8i+lrBJZ/mOTow==",
   "success": true,
   "projectFilePath": "C:\\Users\\ASUS\\source\\repos\\CoreDemo\\CoreDemo\\CoreDemo.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\fluentvalidation\\10.3.5\\fluentvalidation.10.3.5.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.5\\fluentvalidation.aspnetcore.10.3.5.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.5\\fluentvalidation.dependencyinjectionextensions.10.3.5.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.7\\microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.7\\microsoft.aspnet.razor.3.2.7.nupkg.sha512",
