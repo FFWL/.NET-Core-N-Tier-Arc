@@ -1,7 +1,11 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +22,6 @@ namespace CoreDemo.Controllers
             var values = bm.GetBlogListWithCategory();
             return View(values);
         }
-
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;
@@ -26,6 +29,49 @@ namespace CoreDemo.Controllers
             return View(values);
         }
 
-        
+        public IActionResult BlogListByWriter()
+        {
+            var values = bm.GetListWithCategoryByWriterManager(1);
+            return View(values);
+        }
+        [HttpGet]
+        public IActionResult BlogAdd()
+        {
+            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+            ViewBag.cv = cm.GetCategoryList();
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BlogAdd(Blog p)
+        {
+
+
+            BlogValidator bv = new BlogValidator();
+            ValidationResult results = bv.Validate(p);
+
+            if (results.IsValid)
+            {
+                p.blogStatus = true;
+                p.blogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                p.writerID = 1;
+                bm.TAdd(p);
+                return RedirectToAction("BlogListByWriter", "Blog");
+            }
+            foreach (var item in results.Errors)
+            {
+                ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            }
+            return View();
+        }
+
+        public IActionResult DeleteBlog(int id)
+        {
+            var blogValue = bm.TGetById(id);
+            bm.TDelete(blogValue);
+
+            return RedirectToAction("BlogListByWriter", "Blog");
+        }
+
     }
 }

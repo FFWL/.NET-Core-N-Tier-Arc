@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
+    
     public class BlogManager : IBlogService
     {
         IBlogDal _blogDal;
@@ -18,29 +21,14 @@ namespace BusinessLayer.Concrete
             _blogDal = blogDal;
         }
 
-        public void BlogAdd(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BlogDelete(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BlogUpdate(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Blog> GetBlogListWithCategory()
         {
             return _blogDal.GetListWithCategory();
         }
-
-        public Blog GetById(int id)
+        public List<Blog> GetListWithCategoryByWriterManager(int id)
         {
-            throw new NotImplementedException();
+            return _blogDal.GetListWithCategoryByWriter(id);
         }
 
         public List<Blog> GetBlogByID(int id)
@@ -62,5 +50,41 @@ namespace BusinessLayer.Concrete
         {
             return _blogDal.GetListAll(x => x.writerID == id);
         }
+
+        public void TAdd(Blog t)
+        {
+            _blogDal.Insert(t);
+        }
+
+        public void TDelete(Blog t)
+        {
+            _blogDal.Delete(t);
+        }
+
+        public void TUpdate(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BlogAdd(Blog blog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BlogDelete(Blog blog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BlogUpdate(Blog blog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Blog TGetById(int id)
+        {
+            return _blogDal.GetByID(id);
+        }
+
     }
 }
