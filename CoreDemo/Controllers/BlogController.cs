@@ -72,6 +72,22 @@ namespace CoreDemo.Controllers
 
             return RedirectToAction("BlogListByWriter", "Blog");
         }
-
+        [HttpGet]
+        public IActionResult EditBlog(int id)
+        {
+            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+            ViewBag.cv = cm.GetCategoryList();
+            var blogValue = bm.TGetById(id);
+            return View(blogValue);
+        }
+        [HttpPost]
+        public IActionResult EditBlog(Blog p)
+        {
+            p.writerID = 1;
+            p.blogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.blogStatus = true;
+            bm.TUpdate(p);
+            return RedirectToAction("BlogListByWriter");
+        }
     }
 }
