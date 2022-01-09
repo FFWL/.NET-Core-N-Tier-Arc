@@ -22,7 +22,7 @@ namespace CoreDemo.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult SubscribeMail([FromForm]NewsLetter p)
+        public PartialViewResult SubscribeMailPost(NewsLetter p)
         {
             
             p.MailStatus = true;

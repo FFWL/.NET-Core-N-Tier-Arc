@@ -15,13 +15,12 @@
         var data = $("#subForm").serialize();
         $.ajax({
             type: "post",
-            url: "/NewsLetter/SubscribeMail/",
+            url: "/NewsLetter/SubscribeMailPost/",
             data: data,
-            success: function (result) {
-                swal("Good job!");
-                setTimeout(3000);
+            success: function (func) {
+                alert("Writer Added successfully");
             }
-        })
+        });
     }
 
 </script>
