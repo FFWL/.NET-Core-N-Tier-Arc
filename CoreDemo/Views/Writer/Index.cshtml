@@ -11,6 +11,7 @@
 <button type="button" id="btngetbyid" class="btn btn-outline-success">Writer Information</button>
 <button type="button" id="btnaddwriter" class="btn btn-outline-info">Add Writer</button>
 <button type="button" id="btndeletewriter" class="btn btn-outline-danger">Delete Writer</button>
+<button type="button" id="btnupdatewriter" class="btn btn-outline-warning">Update Writer</button>
 <br />
 <br />
 <div id="writerlist">
@@ -33,6 +34,11 @@
 
 <div>
     <input type="text" class="form-control" id="txtid" placeholder="Writer ID for Delete" />
+</div>
+<br />
+<div>
+    <input type="text" class="form-control" id="txtid1" placeholder="Writer ID for Update" />
+    <input type="text" class="form-control" id="txtwritername1" placeholder="Writer Name for Update" />
 </div>
 <br />
 
@@ -101,6 +107,21 @@
                     dataType: "json",
                     success: function (func) {
                        alert("Writer Deleted successfully")
+                    }
+                });
+            });
+
+            $("#btnupdatewriter").click(function () {
+                let writer = {
+                    Id: $("#txtid1").val(),
+                    Name: $("#txtwritername1").val()
+                };
+                $.ajax({
+                    type: "post",
+                    url: "/Admin/Writer/UpdateWriter/",
+                    data: writer,
+                    success: function (func) {
+                        console.log(data);
                     }
                 });
             });
